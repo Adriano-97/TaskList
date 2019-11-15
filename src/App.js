@@ -13,7 +13,7 @@ class App extends Component {
     todos: [
       {
         id: uuid.v4(),
-        title: 'take out trash',
+        title: 'Take out trash',
         completed: false
       },
       {
@@ -40,6 +40,7 @@ class App extends Component {
       })
     });
   };
+
   //Delete Todo Item
   delTodo = id => {
     this.setState({
@@ -70,6 +71,7 @@ class App extends Component {
                   <Todos
                     todos={this.state.todos}
                     markComplete={this.markComplete}
+                    // markCompleteSub={this.markCompleteSub}
                     delTodo={this.delTodo}
                   />
                 </React.Fragment>
