@@ -71,7 +71,6 @@ class App extends Component {
                   <Todos
                     todos={this.state.todos}
                     markComplete={this.markComplete}
-                    // markCompleteSub={this.markCompleteSub}
                     delTodo={this.delTodo}
                   />
                 </React.Fragment>
