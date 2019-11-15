@@ -1,7 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import AddSubTask from './AddSubTodo';
+import SubTodo from './SubTodo';
+import uuid from 'uuid';
 
 export class TodoItem extends Component {
+  state = {
+    subTodos: [
+      {
+        id: uuid.v4(),
+        title: 'Get the trash',
+        completed: false
+      }
+    ]
+  };
+
+  markCompleteSub = subid => {
+    this.setState({
+      subTodos: this.state.subTodos.map(subTodo => {
+        if (subTodo.id === subid) {
+          subTodo.completed = !subTodo.completed;
+        }
+        return subTodo;
+      })
+    });
+  };
   getStyle = () => {
     return {
       background: '#f4f4f4',
@@ -10,7 +33,7 @@ export class TodoItem extends Component {
       borderBottom: '1px #ccc dotted'
     };
   };
-
+  insertSubT = id => {};
   render() {
     const { id, title } = this.props.todo;
     return (
@@ -25,6 +48,12 @@ export class TodoItem extends Component {
             x
           </button>
         </p>
+        <SubTodo
+          subTodos={this.state.subTodos}
+          todo={this.props.todo}
+          markCompleteSub={this.markCompleteSub}
+        />
+        <AddSubTask insertSubT={this.insertSubT} todo={this.props.todo} />
       </div>
     );
   }
